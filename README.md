@@ -13,7 +13,6 @@
 
 # Table of Contents
 
-- [Design Infra Monitoring](#design-infra-monitoring)
 - [Introduction](#introduction)
 - [Objectives](#objectives)
 - [Key Performance Metrics](#key-performance-metrics)
