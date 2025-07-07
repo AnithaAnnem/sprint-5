@@ -1,11 +1,11 @@
 ![image](https://github.com/user-attachments/assets/6c9bc0fb-63b9-452f-845d-4161af50989b)
 
 
-# Documentation on Dashboard Designing of infra monitoring
+# Dashboard Designing of infra monitoring
 
 |**Author**        | **created on**       | **Version** |**Last edited on**| **Review Level**   | **Reviewer**      |
 |---------------|------------|---------|--------|--------|----------------------|
-| Anitha Annem  | Jul 07  | v1.0|  Jul 07    | Pre-Reviewer   | Priyanshu            |
+| Anitha Annem  | Jul 07  | v1.0|  Jul 08    | Pre-Reviewer   | Priyanshu            |
 | Anitha Annem  |  |  |   | L0             | Khushi Malhothra    |
 | Anitha Annem  |     |      |         | L1             | Mukul Joshi       |
 | Anitha Annem  |     |      |         | L2             | piyush Upadhyay      |
@@ -42,8 +42,33 @@ Infrastructure monitoring is essential to:
 - **Support SLAs and compliance requirements.**
 - **Enable faster troubleshooting and reduce MTTR (Mean Time to Recovery).**
 
+# Dashboard Design 
+
+![image](https://github.com/user-attachments/assets/709bd756-7c79-4202-a05c-1aa9adbe764b)
 
 
+# Dashboard Design Approach for Infrastructure Monitoring
+
+An effective infrastructure monitoring dashboard provides clear, actionable insights to operators and engineers. The design should focus on simplicity, usability, and relevance to support quick decision-making.
+
+# Layout and Panels
+
+- **Logical grouping**: Arrange panels by infrastructure layers (e.g., compute, storage, network), services, or application tiers. This helps users quickly locate issues in specific areas.
+- **Top-level summary panels**: Use high-level panels at the top (e.g., overall system health, critical alerts) to provide a quick snapshot of the environment.
+- **Detailed panels below**: Add more granular panels (e.g., per-node CPU usage, disk I/O, individual service latency) below the summary for deeper analysis.
+- **Whitespace and balance**: Maintain adequate spacing to avoid clutter and guide the user's eye through the dashboard smoothly.
+
+# Grouping Logic
+
+- Group related metrics together (e.g., CPU, memory, and disk metrics in one section for compute nodes).
+- Use consistent section headers or borders to visually separate groups.
+- Consider aligning groups based on functional domains (e.g., database metrics together, front-end metrics together).
+
+# Panel Types and Visualization
+
+- Use appropriate visualization types (graphs for trends, gauges for capacity, single-value panels for critical statuses).
+- Avoid using too many different chart types to reduce cognitive load.
+- Enable drill-down links on panels to allow users to navigate to more detailed dashboards when needed.
 
 
 # Best Practices
