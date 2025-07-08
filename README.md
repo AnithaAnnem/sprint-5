@@ -1,9 +1,10 @@
+![image](https://github.com/user-attachments/assets/490f72fa-3fa1-4f8b-9d74-a6639c8e043c)
 
 # Infra Monitoring with Alert Manager
 
 |**Author**        | **created on**       | **Version** |**Last edited on**| **Review Level**   | **Reviewer**      |
 |---------------|------------|---------|--------|--------|----------------------|
-| Anitha Annem  | Jul 07  | v1.0|  Jul 07    | Pre-Reviewer   | Priyanshu            |
+| Anitha Annem  | Jul 07  | v1.0|  Jul 08    | Pre-Reviewer   | Priyanshu            |
 | Anitha Annem  |  |  |   | L0             | Khushi Malhothra    |
 | Anitha Annem  |     |      |         | L1             | Mukul Joshi       |
 | Anitha Annem  |     |      |         | L2             | piyush Upadhyay      |
@@ -20,11 +21,8 @@ This document provides a detailed guide on setting up and using Grafana with ale
 - **Grafana**: Visualizes metrics and sets up dashboards.
 - **Alert Manager**: Manages alerts, routes them to the appropriate channels, and sends notifications.
 
-# Alerting Rules
-Alerting rules are critical for detecting issues in your infrastructure. These rules define the conditions under which an alert should be triggered. 
-Alerting rules are written in Prometheus, where you specify conditions based on metrics. When these conditions are met for a specified duration, an alert is triggered and sent to Alert Manager.
 
-## Steps to Create Alerting Rules
+# Steps to Create Alerting Rules
 1. **Identify Key Metrics**: Determine which metrics are crucial for your infrastructure’s health (e.g., CPU usage, memory usage, disk space, network latency, etc.).
 2. **Define Thresholds**: Set thresholds for these metrics that will trigger alerts. For example, disk space usage above 80% might trigger a warning, while above 90% could trigger a critical alert.
 3. **Create Alerting Rules in Prometheus**: Write alerting rules using Prometheus’s PromQL. Example:
@@ -94,7 +92,7 @@ Begin by setting up the basic configuration in the `alertmanager.yml` file. This
     receivers:
     - name: 'email_notifications'
       email_configs:
-      - to: 'rahul.kumar@opstree.com'
+      - to: 'anitha.annem.snaatak@gmail.com'
         from: 'alertmanager@opstree.com'
         smarthost: 'smtp.opstree.com:587'
         auth_username: 'alertmanager@opstree.com'
@@ -107,10 +105,10 @@ Begin by setting up the basic configuration in the `alertmanager.yml` file. This
         severity: 'warning'
       equal: ['alertname', 'instance']
     ```
-3. **Routing Alerts**: Set up routing rules to determine which alerts go to which receivers. For example, you can route critical alerts to both email and Slack, while lower severity alerts might only go to email.
-4. **Notification Channels**: Configure various notification channels such as email, Slack, or PagerDuty. This ensures alerts reach the appropriate teams quickly.
-5. **Grouping and Inhibition**: Group similar alerts to avoid alert fatigue. Use inhibition rules to suppress alerts that are less important when a related, more critical alert is active.
-6. **Test Configuration**: Test the entire setup by triggering sample alerts. Verify that the alerts are received correctly and routed to the right channels.
+-  **Routing Alerts**: Set up routing rules to determine which alerts go to which receivers. For example, you can route critical alerts to both email and Slack, while lower severity alerts might only go to email.
+-  **Notification Channels**: Configure various notification channels such as email, Slack, or PagerDuty. This ensures alerts reach the appropriate teams quickly.
+-  **Grouping and Inhibition**: Group similar alerts to avoid alert fatigue. Use inhibition rules to suppress alerts that are less important when a related, more critical alert is active.
+-  **Test Configuration**: Test the entire setup by triggering sample alerts. Verify that the alerts are received correctly and routed to the right channels.
 
 # Step-by-Step Usage
 1. **Monitoring**: Alert Manager continuously monitors incoming alerts from Prometheus. It checks the alert labels and routes them according to your configuration.
@@ -120,10 +118,25 @@ Begin by setting up the basic configuration in the `alertmanager.yml` file. This
 5. **Silencing Alerts**: If you’re performing maintenance or are aware of an issue that’s already being handled, you can silence alerts temporarily. This prevents unnecessary notifications.
 6. **Inhibition**: Alerts can be suppressed based on inhibition rules. For instance, if a critical alert is active, related warning alerts might be inhibited to reduce noise.
 
-## Overview
-Grafana is a powerful visualization tool for displaying metrics collected by Prometheus. It can also be used to set up dashboards and alerting rules to monitor infrastructure. Alert Manager manages alerts sent by Prometheus, handling deduplication, grouping, and routing to the correct receivers. This guide walks through the steps needed to configure and effectively use Grafana and Alert Manager in your infrastructure monitoring setup.
+# Severity Levels
 
-### Best Practices for Using Alert Manager
+| Level        | Meaning                              | Example Rules                     | Target Response Time |
+| ------------ | ------------------------------------ | --------------------------------- | -------------------- |
+| **Critical** | Immediate action; risk of outage     | `HighCPUUsage`, `LowDiskSpace`    | 15 min (PagerDuty)   |
+| **Warning**  | Needs attention soon; degrade likely | `HighSwapUsage`, `HighDiskIOWait` | 1 h (Slack)          |
+| **Info**     | Informational; no direct action      | Deployment annotations            | As needed            |
+
+
+
+# Notification Channels
+
+| Channel                 | Used For                   | Tool / Route                 |
+| ----------------------- | -------------------------- | ---------------------------- |
+| **PagerDuty**           | Critical alerts            | 24×7 on‑call rotation        |
+| **Slack #infra-alerts** | Warning alerts, summaries  | Alertmanager webhook → Slack |
+| **Email Ops DL**        | Info alerts, daily digests | Alertmanager email receiver  |
+
+# Best Practices for Using Alert Manager
 
 | Best Practice                    | Description                                                                                      |
 |----------------------------------|--------------------------------------------------------------------------------------------------|
@@ -133,15 +146,15 @@ Grafana is a powerful visualization tool for displaying metrics collected by Pro
 | **Training**                     | Ensure your team is trained in using Alert Manager, understanding alerts, and taking appropriate action. |
 | **Testing**                      | Regularly test your alerting and notification setup to ensure everything works as expected.       |
 
-## Conclusion
+# Conclusion
 Alert Manager is a key component in an effective infrastructure monitoring setup. By properly configuring and using it, you can ensure that your team is notified of critical issues in a timely manner, enabling quick response and resolution.
 
-## Contact Information
-| Name          | Email                    |
-|---------------|--------------------------|
-| Rahul Sharma  | rahul.kumar@opstree.com  |
+# Contact Information 
+| Name       | Email Address                |
+|------------|------------------------------|
+| Anitha     |anitha.annem.snaatak@mygurukulam.co|
 
-## References
+# References
 
 | Reference                               | Description                                      |
 |-----------------------------------------|--------------------------------------------------|
